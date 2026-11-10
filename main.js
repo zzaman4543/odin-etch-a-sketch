@@ -5,3 +5,16 @@ function generateGrid () {
         container.appendChild(div);
     }
 }
+
+function toggleBoxHighlight (event) {
+    event.target.classList.toggle("highlight");
+}
+
+function setupGridEvents () {
+    const container = document.getElementById("container");
+    container.addEventListener("mouseover", toggleBoxHighlight);
+    container.addEventListener("mouseout", toggleBoxHighlight);
+}
+
+generateGrid();
+setupGridEvents();
