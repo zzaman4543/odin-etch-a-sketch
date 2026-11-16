@@ -18,6 +18,37 @@ function initializeGridEvents() {
     container.addEventListener("mouseout", toggleHighlight);
 }
 
+function drawTrail() {
+    const container = document.getElementById("container");
+    container.addEventListener("mousemove", drawTrailLine);
+
+    let isFirstMouseMove = true;
+    let previousX;
+    let previousY;
+
+    function drawTrailLine(event) {
+        const currentX = event.clientX;
+        const currentY = event.clientY;
+
+        const canvas = document.getElementById("canvas-id");
+        const context = canvas.getContext("2d");
+
+        context.lineWidth = 3;
+
+        if (isFirstMouseMove) {
+            context.beginPath(); 
+            isFirstMouseMove = false;
+        } else {
+            context.moveTo(previousX, previousY);
+            context.lineTo(currentX, currentY);
+            context.stroke();
+        }
+
+        previousX = currentX;
+        previousY = currentY;
+    }
+}
+
 function toggleHighlight(event) {
     if (event.target.tagName === "DIV") {
         event.target.classList.toggle("highlight");
@@ -41,3 +72,4 @@ generateGrid();
 initializeCanvasSize();
 initializeGridEvents();
 updateCanvasSizeOnElementResize();
+drawTrail();
