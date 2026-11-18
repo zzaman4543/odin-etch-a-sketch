@@ -18,6 +18,21 @@ function initializeGridEvents() {
     container.addEventListener("mouseout", toggleHighlight);
 }
 
+function initializeNewGridButton() {
+    const newGridButton = document.getElementById("new-grid-button");
+
+    newGridButton.addEventListener("click", () => {
+        const numberOfSquaresPerSide = getNumberOfSquaresPerSide();
+        generateNewGrid(numberOfSquaresPerSide);
+    });
+}
+
+function toggleHighlight(event) {
+    if (event.target.tagName === "DIV") {
+        event.target.classList.toggle("highlight");
+    }
+}
+
 function drawTrail() {
     const container = document.getElementById("grid-container");
     container.addEventListener("mousemove", drawTrailLine);
@@ -49,10 +64,24 @@ function drawTrail() {
     }
 }
 
-function toggleHighlight(event) {
-    if (event.target.tagName === "DIV") {
-        event.target.classList.toggle("highlight");
+function getNumberOfSquaresPerSide() {
+    const numberOfSquaresPerSide = parseInt(
+        prompt(
+            "How many squares do you want per each side of the new grid?"
+        ),
+        10
+    );
+    
+    if (numberOfSquaresPerSide > 100) {
+        alert("The number of squares per side can't be greater than 100.");
+    } else {
+        return numberOfSquaresPerSide;
     }
+}
+
+
+function generateNewGrid(numberOfSquaresPerSide) {
+
 }
 
 function updateCanvasSizeOnElementResize() {
@@ -71,5 +100,7 @@ function updateCanvasSizeOnElementResize() {
 generateGrid();
 initializeCanvasSize();
 initializeGridEvents();
-updateCanvasSizeOnElementResize();
+initializeNewGridButton();
 drawTrail();
+updateCanvasSizeOnElementResize();
+
