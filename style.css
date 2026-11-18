@@ -29,6 +29,22 @@ body {
     z-index: -1;
 }
 
+#new-grid-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+#new-grid-button {
+    background-color: rgb(99, 95, 95);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 30px;
+    margin-top: 15px;
+    border-radius: 12px;
+}
+
 .highlight {
     background-color: #7dedfa;
 }
