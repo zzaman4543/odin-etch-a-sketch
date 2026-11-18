@@ -1,7 +1,7 @@
 function generateGrid() {
     for (let i = 0; i < 256; i++) {
         const div = document.createElement("div");
-        const container = document.getElementById("container");
+        const container = document.getElementById("grid-container");
         container.appendChild(div);
     }
 }
@@ -13,13 +13,13 @@ function initializeCanvasSize() {
 }
 
 function initializeGridEvents() {
-    const container = document.getElementById("container");
+    const container = document.getElementById("grid-container");
     container.addEventListener("mouseover", toggleHighlight);
     container.addEventListener("mouseout", toggleHighlight);
 }
 
 function drawTrail() {
-    const container = document.getElementById("container");
+    const container = document.getElementById("grid-container");
     container.addEventListener("mousemove", drawTrailLine);
 
     let isFirstMouseMove = true;
